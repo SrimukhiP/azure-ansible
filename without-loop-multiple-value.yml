@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Install Git
+    yum: name=git state=present
+  - name: Install zip
+    yum: name=zip state=absent
+  - name: Install httpd
+    yum: name=httpd state=present
+  - name: Install wget
+    yum: name=wget state=latest

@@ -1,0 +1,4 @@
+---
+- name: Deploy the new WAR file to target servers
+  copy: src=/home/ansible/SampleWebApp.war dest=/home/ansible/tomcat/webapps
+

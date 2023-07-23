@@ -1,0 +1,8 @@
+---
+- hosts: appservers
+  become: true
+  tasks:
+  - name: Get facts for one Public IP
+    azure_rm_publicipaddress_info:
+      resource_group: jenkins-rg
+      name: Ansible-Controller

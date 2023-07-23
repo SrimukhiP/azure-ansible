@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Remove git
+    yum: name=git state=absent
+    tags:
+     - remove_git
+  - name: Install zip
+    yum: name=zip state=present
+    tags:
+     - install_zip
+  - name: remove wget
+    yum: name=wget state=absent
+    tags:
+      - remove_wget
+  - name: Install httpd
+    yum: name=httpd state=present
+    tags:
+      - install_httpd
+  - name: remove maven
+    yum: name=maven state=absent
+    tags:
+     - remove_maven

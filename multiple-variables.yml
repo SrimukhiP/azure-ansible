@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  vars:
+   name: 
+   - Smith
+   - john
+   - ronald
+  tasks:
+  - name: Display the values
+    debug:
+     msg={{ name[0],name[1],name[2] }}
+

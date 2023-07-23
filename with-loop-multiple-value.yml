@@ -1,0 +1,11 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Install Packages
+    yum: name={{ item.name }} state={{ item.state }}
+    with_items:
+      - { name: git, state: present }
+      - { name: zip, state: absent }
+      - { name: wget, state: present }
+      - { name: httpd, state: latest }

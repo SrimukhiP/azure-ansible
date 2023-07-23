@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  tasks:
+  - name: Display values
+    debug:
+     msg={{ ansible_all_ipv4_addresses }}
+  - name: Display IP
+    command: az vm show -d -g jenkins-rg -n {{ ansible_hostname }} --query publicIps -o tsv
+    register: reg_publicIP
+  - debug:
+     var: reg_publicIP.stdout
+  - name: display work 
+    debug:
+     msg={{ reg_publicIP.stdout }}

@@ -1,0 +1,5 @@
+---
+- name: Stop application on {{ansible_hostname}}
+  command: wget "http://{{tomcat_user}}:{{tomcat_pwd}}@{{ansible_azure_public_ipv4.stdout}}:8080/manager/text/stop?path=/SampleWebApp" -O - -q
+  tags:
+   - stop-app

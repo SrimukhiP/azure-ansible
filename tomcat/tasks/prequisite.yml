@@ -1,0 +1,7 @@
+---
+  - name: Display IP
+    command: az vm show -d -g jenkins-rg -n {{ ansible_hostname }} --query publicIps -o tsv
+    tags:
+     - common
+    register: ansible_azure_public_ipv4 
+    
