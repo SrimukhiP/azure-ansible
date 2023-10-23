@@ -24,3 +24,5 @@
   
   - name: Deploy the new WAR file to target servers
     copy: src=webapp/target/webapp.war  dest=/opt/tomcat/apache-tomcat-7.0.109/webapps
+    become: true
+    become_user: jenkins
