@@ -20,6 +20,7 @@ pipeline {
             steps{
                sh '''
                 mvn package
+		cp -r webapp/target/webapp.war /var/lib/jenkins/workspace/
                 '''
             }
         }
