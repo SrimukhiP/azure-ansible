@@ -9,8 +9,14 @@ pipeline {
          maven 'MAVEN_HOME'
          jdk 'JAVA_HOME'
     }
-
-    stages{
+   stages {
+     stage('pre-build step') {
+            steps {
+		sh '''
+                echo "Pre Build Step"
+		'''
+	    }
+	}
         stage('Git Checkout'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github access', url: 'https://github.com/GoudSagar/azure-ansible.git']]])
@@ -33,6 +39,17 @@ pipeline {
                 '''
              }
          }
+	stage ('Static Code Analysis') {
+             environment {
+             scannerHome = tool 'SONAR_SCANNER'
+             }
+             steps {
+                echo 'Running Static Code Analysis'
+                 withSonarQubeEnv('SONAR_HOME') {
+                 sh '${scannerHome}/bin/sonar-scanner'
+                 }
+            }
+        }
         stage('Docker Build') {
                  steps{
                     script {
@@ -100,5 +117,12 @@ pipeline {
                  '''
              }
          }
+     stage('post-build step') {
+            steps {
+		sh '''
+                echo "Successfull Pipeline"
+		'''
+	    }
+	}
     }
 }
