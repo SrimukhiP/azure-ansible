@@ -8,8 +8,6 @@ spec:
    protocol: TCP
    port: 80
    targetPort: 8080
- externalIPs:
- - 18.188.49.183
  selector:
    app: my-app
  type: LoadBalancer
