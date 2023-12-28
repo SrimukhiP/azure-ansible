@@ -50,10 +50,26 @@ pipeline{
                  }
             }
         }
+
+        stage('Jfrog Artifact Upload') {
+            steps {
+              rtUpload (
+                serverId: 'artifactory',
+                spec: '''{
+                      "files": [
+                        {
+                          "pattern": "*.war",
+                           "target": "maven-snapshot-repo"
+                        }
+                    ]
+                }'''
+              )
+          }
+        }
         stage ('Tomcat Deployment') {
            steps {
              script {
-                 deploy adapters: [tomcat7(credentialsId: 'tomcat-credentials', path: '', url: 'http://172.177.138.91:8080')], contextPath: '/webapp-app', onFailure: false, war: 'webapp/target/webapp.war' 
+                 deploy adapters: [tomcat7(credentialsId: 'tomcat-credentials', path: '', url: 'http://172.203.73.193:8080')], contextPath: '/webapp-app', onFailure: false, war: 'webapp/target/webapp.war' 
                     }
                   }
            }
