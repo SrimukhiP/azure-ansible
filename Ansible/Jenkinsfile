@@ -50,6 +50,21 @@ pipeline {
                  }
             }
         }
+        stage('Jfrog Artifact Upload') {
+            steps {
+              rtUpload (
+                serverId: 'artifactory',
+                spec: '''{
+                      "files": [
+                        {
+                          "pattern": "*.war",
+                           "target": "maven-snapshot-repo"
+                        }
+                    ]
+                }'''
+              )
+          }
+        }
         stage ('Application Deployment using Ansible') {
             parallel {
               stage('Webserver-DEV') {
