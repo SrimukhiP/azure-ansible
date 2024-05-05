@@ -4,10 +4,10 @@ ENV tomcat_test 123
 RUN yum update -y
 RUN mkdir -p /opt/tomcat/
 WORKDIR /opt/tomcat
-RUN curl -O http://archive.apache.org/dist/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
-RUN tar -xvf apache-tomcat-8.5.40.tar.gz
-RUN mv apache-tomcat-8.5.40/* /opt/tomcat/
-RUN yum -y install java-1.8.0*
+RUN curl -O https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tomcat-7.0.109.tar.gz
+RUN tar -xvf apache-tomcat-7.0.109.tar.gz
+RUN mv apache-tomcat-7.0.109/* /opt/tomcat/
+RUN yum -y install java-11*
 RUN java -version
 WORKDIR /opt/tomcat/webapps
 COPY  ./Docker/webapp.war /opt/tomcat/webapps/
