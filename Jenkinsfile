@@ -46,7 +46,7 @@ pipeline{
              }
              steps {
                 echo 'Running Static Code Analysis'
-                 withSonarQubeEnv(credentialsId: 'SonarQube-Token') {
+                 withSonarQubeEnv('SONAR_HOME') {
                  sh '${scannerHome}/bin/sonar-scanner'
                  }
             }
