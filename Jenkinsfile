@@ -42,7 +42,7 @@ pipeline{
   
         stage ('Static Code Analysis') {
              environment {
-             scannerHome = tool 'SONAR_SCANNER'
+             scannerHome = tool 'SONAR_HOME'
              }
              steps {
                 echo 'Running Static Code Analysis'
