@@ -9,6 +9,7 @@ pipeline{
          maven 'MAVEN_HOME'
          jdk 'JAVA_HOME'
          git 'GIT_HOME'
+	 sonarqube 'SONAR_HOME'
     }
 
     stages{
