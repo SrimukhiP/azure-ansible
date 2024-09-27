@@ -70,7 +70,7 @@ pipeline{
         stage ('Tomcat Deployment') {
            steps {
              script {
-                 deploy adapters: [tomcat7(credentialsId: 'tomcat-credentials', path: '', url: 'http://20.55.74.20:8080')], contextPath: '/webapp-app', war: '**/*.war'
+                 deploy adapters: [tomcat7(credentialsId: 'tomcat-credentials', path: '', url: 'http://20.55.74.20:8080')], contextPath: '/webapp-applx', war: '**/*.war'
                     }
                   }
            }
